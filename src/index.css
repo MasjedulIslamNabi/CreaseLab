@@ -1,0 +1,344 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  [data-theme="carbon"] {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --bg-canvas: #050505;
+    --bg-panel: #0E0E0E;
+    --bg-elevated: #181818;
+    --bg-well: #121212;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(16, 185, 129, 0.45);
+    --text-primary: #FFFFFF;
+    --text-secondary: #A3A3A3;
+    --text-muted: #737373;
+    --accent-primary: #10B981;
+    --accent-primary-hover: #34D399;
+    --accent-primary-fg: #000000;
+    --accent-secondary: #10B981;
+    --accent-positive: #10B981;
+    --accent-warning: #F59E0B;
+  }
+
+  [data-theme="carbon-high-contrast"] {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --bg-canvas: #000000;
+    --bg-panel: #0A0A0A;
+    --bg-elevated: #161616;
+    --bg-well: #101010;
+    --border-subtle: rgba(255, 255, 255, 0.14);
+    --border-strong: rgba(52, 211, 153, 0.7);
+    --text-primary: #FFFFFF;
+    --text-secondary: #D4D4D4;
+    --text-muted: #A3A3A3;
+    --accent-primary: #10B981;
+    --accent-primary-hover: #34D399;
+    --accent-primary-fg: #000000;
+    --accent-secondary: #10B981;
+    --accent-positive: #10B981;
+    --accent-warning: #F59E0B;
+  }
+
+  [data-theme="carbon-midnight"] {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --bg-canvas: #040507;
+    --bg-panel: #0A0C10;
+    --bg-elevated: #141720;
+    --bg-well: #0E1017;
+    --border-subtle: rgba(255, 255, 255, 0.09);
+    --border-strong: rgba(16, 185, 129, 0.5);
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-primary: #10B981;
+    --accent-primary-hover: #34D399;
+    --accent-primary-fg: #000000;
+    --accent-secondary: #10B981;
+    --accent-positive: #10B981;
+    --accent-warning: #F59E0B;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 260ms ease, color 260ms ease;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono, .tabular-nums {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  button, select, input {
+    transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+/* ============================================================================
+ * GLOBAL THEME ENGINE OVERRIDES (Transforms all workspaces & sub-panels)
+ * ============================================================================ */
+.bg-\[\#070A10\],
+.bg-\[\#090A0F\],
+.bg-\[\#05080F\],
+.bg-\[\#0A0D14\],
+.bg-\[\#07090E\],
+.bg-\[\#090C12\],
+.bg-slate-950 {
+  background-color: var(--bg-well) !important;
+}
+
+.bg-\[\#0C111C\],
+.bg-\[\#11131A\],
+.bg-\[\#0D0F17\],
+.bg-\[\#10141E\],
+.bg-slate-900 {
+  background-color: var(--bg-panel) !important;
+}
+
+.bg-\[\#111827\],
+.bg-slate-800 {
+  background-color: var(--bg-elevated) !important;
+}
+
+/* Remap violet to emerald for unified carbon/emerald branding */
+.bg-violet-400,
+.bg-violet-500 {
+  background-color: var(--accent-primary) !important;
+  color: #000000 !important;
+}
+
+.text-violet-200,
+.text-violet-300,
+.text-violet-400 {
+  color: var(--accent-primary) !important;
+}
+
+.border-violet-400,
+.border-violet-500\/35,
+.border-violet-500\/40,
+.border-violet-400\/50 {
+  border-color: var(--border-strong) !important;
+}
+
+.bg-violet-500\/15,
+.bg-violet-500\/25 {
+  background-color: color-mix(in srgb, var(--accent-primary) 15%, transparent) !important;
+}
+
+/* Keep Video & 3D Canvas Stage dark cinema tone */
+.cinema-stage {
+  background-color: #050505 !important;
+  color: #FFFFFF !important;
+}
+
+/* Remap Slate borders to hairline borders */
+.border-slate-800\/80,
+.border-slate-800\/90,
+.border-slate-800,
+.border-slate-700,
+.border-white\/\[0\.07\],
+.border-white\/\[0\.06\],
+.border-white\/\[0\.08\] {
+  border-color: var(--border-subtle) !important;
+}
+
+.divide-slate-800\/80 > :not([hidden]) ~ :not([hidden]),
+.divide-white\/\[0\.06\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Active highlights use Vivid Emerald */
+.bg-cyan-400,
+.bg-cyan-500,
+.bg-teal-400,
+.bg-teal-500 {
+  background-color: var(--accent-primary) !important;
+  color: var(--accent-primary-fg) !important;
+}
+
+.hover\:bg-cyan-300:hover,
+.hover\:bg-cyan-400:hover,
+.hover\:bg-teal-300:hover {
+  background-color: var(--accent-primary-hover) !important;
+}
+
+.text-cyan-300,
+.text-cyan-400,
+.text-teal-300,
+.text-teal-400 {
+  color: var(--accent-primary) !important;
+}
+
+.border-cyan-400,
+.border-cyan-400\/50,
+.border-cyan-400\/60,
+.border-cyan-500\/30,
+.border-cyan-500\/40,
+.border-cyan-500\/50,
+.border-teal-400\/35,
+.border-teal-400\/45,
+.border-teal-400\/60 {
+  border-color: var(--border-strong) !important;
+}
+
+.bg-cyan-500\/10,
+.bg-cyan-500\/15,
+.bg-cyan-500\/20,
+.bg-teal-400\/10,
+.bg-teal-400\/15,
+.bg-teal-500\/10 {
+  background-color: color-mix(in srgb, var(--accent-primary) 14%, transparent) !important;
+}
+
+.accent-cyan-400,
+.accent-teal-400 {
+  accent-color: var(--accent-primary) !important;
+}
+
+/* Smooth Studio Animations */
+@keyframes workspaceEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInModal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.35), 0 0 30px rgba(16, 185, 129, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 0 0 50px rgba(16, 185, 129, 0.25);
+  }
+}
+
+@keyframes laserShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-workspace-enter {
+  animation: workspaceEnter 340ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeInModal 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-toast-slide {
+  animation: toastSlideIn 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-radar-ping {
+  animation: radarPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  transform-origin: center;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+.glass-deck {
+  background: rgba(14, 14, 14, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.broadcast-card {
+  background: #0E0E0E;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.broadcast-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
+}
+

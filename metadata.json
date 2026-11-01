@@ -1,0 +1,6 @@
+{
+  "name": "CreaseLab",
+  "description": "AI-powered slow-motion cricket batting biomechanics and swing telemetry analyzer with real-time bat arc tracking, wagon-wheel prediction, and side-by-side session comparison.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
